@@ -1,0 +1,7 @@
+build/
+working/
+*.swp
+*.swl
+*.swo
+*.swn
+*~
