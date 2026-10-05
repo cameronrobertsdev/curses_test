@@ -20,7 +20,9 @@ likely be necessary to get it working on Windows or MacOS.
 
 Open a terminal and run the following command:
 
-`git clone https://github.com/cameronrobertsdev/curses_test `
+``` console
+git clone https://github.com/cameronrobertsdev/curses_test
+```
 
 Navigate to the new directory and ensure you have CMake installed with:
 
