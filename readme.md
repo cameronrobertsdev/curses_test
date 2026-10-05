@@ -26,13 +26,19 @@ git clone https://github.com/cameronrobertsdev/curses_test
 
 Navigate to the new directory and ensure you have CMake installed with:
 
-`CMake --version `
+``` console
+CMake --version
+```
 
 If you don't have CMake, install it using your package manager. E.g.
 
-`sudo pacman -S CMake `
+``` console
+sudo pacman -S CMake
+```
 
-`winget install CMake `
+``` powershell 
+winget install CMake
+```
 
 etc.
 
@@ -40,7 +46,9 @@ etc.
 
 Configure CMake by running the following command:
 
-`CMake -B build -S. -G Ninja -DCMAKE_BUILD_TYPE=Release`
+``` console
+CMake -B build -S. -G Ninja -DCMAKE_BUILD_TYPE=Releas
+```
 
 The `-G` flag tells CMake what generator to use. If you omit this flag, CMake 
 should use the default generator for your system. 
