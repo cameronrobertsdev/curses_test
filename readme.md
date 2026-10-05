@@ -1,3 +1,7 @@
+![looping web image of a terminal based game showing an ascii-style, bird character 
+moving around a screen with ascii-style trees.](/assets/images/2026-10_curses-test_banner-02.webp)
+
+
 # NCurses Game
 
 ### A Game Made to learn more about the NCurses Library
