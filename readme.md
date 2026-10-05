@@ -47,7 +47,7 @@ etc.
 Configure CMake by running the following command:
 
 ``` console
-CMake -B build -S. -G Ninja -DCMAKE_BUILD_TYPE=Releas
+CMake -B build -S. -G Ninja -DCMAKE_BUILD_TYPE=Release
 ```
 
 The `-G` flag tells CMake what generator to use. If you omit this flag, CMake 
