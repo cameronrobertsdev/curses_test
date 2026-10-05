@@ -94,9 +94,8 @@ int MainLoop(){
 
 }
 
-int main(){
+void InintCurses(){
 	setlocale(LC_ALL, "");
-
 	initscr();
 	cbreak();
 	noecho();
@@ -104,6 +103,10 @@ int main(){
 	nodelay(stdscr, true);
 	keypad(stdscr, true);
 	curs_set(false);
+}
+
+int main(){
+	InintCurses();
 	MainLoop();
 	endwin();
 	

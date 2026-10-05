@@ -1,8 +1,8 @@
-### NCurses Game
+# NCurses Game
 
-# A Game Made to learn more about the NCurses Library
+### A Game Made to learn more about the NCurses Library
 
-# Made by Cameron Roberts 2026
+Made by Cameron Roberts 2026
 
 ## Features
 
@@ -16,7 +16,7 @@ Here are some instructions for building the project from source. The project has
 only been built on an Arch Linux Installation and some additional configuration will
 likely be necessary to get it working on Windows or MacOS.
 
-# Step 1:
+### Step 1:
 
 Open a terminal and run the following command:
 
@@ -34,7 +34,7 @@ If you don't have CMake, install it using your package manager. E.g.
 
 etc.
 
-# Step 2:
+### Step 2:
 
 Configure CMake by running the following command:
 
@@ -43,13 +43,13 @@ Configure CMake by running the following command:
 The `-G` flag tells CMake what generator to use. If you omit this flag, CMake 
 should use the default generator for your system. 
 
-# Step 3:
+### Step 3:
 
 Build the project by running the command:
 
 `CMake --build build`
 
-# Step 4:
+### Step 4:
 
 Run the project from your terminal with:
 
