@@ -30,7 +30,7 @@ struct Player{
 	void Move(Vector2 dir);
 };
 
-struct Tree{
+struct StaticObject{
 	Vector2 position;
 	int layerCount = 6;
 	const char* layers[6] = {"  (   )  ",
@@ -40,10 +40,10 @@ struct Tree{
 													"   \\║    ",
 													"    ║    "};
 
-	void DrawTree();
+	void Draw();
 };
 
-void Tree::DrawTree(){
+void StaticObject::Draw(){
 	for(int i = 0; i < layerCount; i++){
 		mvprintw(position.y + i, position.x, layers[i]);
 	}
@@ -54,10 +54,24 @@ void Player::Move(Vector2 dir){
 	position.y += dir.y;
 }
 
+void DrawDialogue(const char* inputStr){
+	int screenWidth = 10;
+	int screenHeight = 3;
+	//getmaxyx(stdscr, screenHeight, screenWidth);
+	WINDOW* dialogueBox = newwin(3, screenWidth, 0, 0);
+	box(dialogueBox, 0, 0);
+	wrefresh(dialogueBox);
+	while(1){
+		int input = getch();
+		if(input == KEY_RETURN) break;
+	}
+}
+
+
 int MainLoop(){
 	Player plyr;
-	Tree tree;
-	Tree tree2;
+	StaticObject tree;
+	StaticObject tree2;
 	tree.position = Vector2(7, 8);
 	tree2.position = Vector2(31, 19);
 
@@ -85,16 +99,17 @@ int MainLoop(){
 			plyr.face = plyr.faceL;
 			plyr.Move(LEFT_DIR);
 		}
-		tree.DrawTree();
-		tree2.DrawTree();
+		tree.Draw();
+		tree2.Draw();
 		mvprintw(plyr.position.y, plyr.position.x, plyr.face);
 		refresh();
+		DrawDialogue("TEST");
 	}
 	return 0;
 
 }
 
-void InintCurses(){
+void InitCurses(){
 	setlocale(LC_ALL, "");
 	initscr();
 	cbreak();
@@ -106,7 +121,7 @@ void InintCurses(){
 }
 
 int main(){
-	InintCurses();
+	InitCurses();
 	MainLoop();
 	endwin();
 	
