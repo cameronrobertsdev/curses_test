@@ -6,6 +6,7 @@
 
 //Global Variables
 
+
 bool gameShouldClose = false;
 
 struct Vector2{
@@ -63,17 +64,22 @@ void DrawDialogue(const char* inputStr){
 	wrefresh(dialogueBox);
 	while(1){
 		int input = getch();
-		if(input == KEY_RETURN) break;
+		if(input == KEY_ENTER) break;
+	}
+}
+
+void DrawObjects(StaticObject objs[], int objectCount){
+	for(int i = 0; i < objectCount; i++){
+		objs[i].Draw();
 	}
 }
 
 
 int MainLoop(){
 	Player plyr;
-	StaticObject tree;
-	StaticObject tree2;
-	tree.position = Vector2(7, 8);
-	tree2.position = Vector2(31, 19);
+	StaticObject trees[2];
+	trees[0].position = Vector2(7, 8);
+	trees[1].position = Vector2(31, 19);
 
 	int input;
 	while(!gameShouldClose){
@@ -99,11 +105,10 @@ int MainLoop(){
 			plyr.face = plyr.faceL;
 			plyr.Move(LEFT_DIR);
 		}
-		tree.Draw();
-		tree2.Draw();
+		DrawObjects(trees,2);
 		mvprintw(plyr.position.y, plyr.position.x, plyr.face);
 		refresh();
-		DrawDialogue("TEST");
+		//DrawDialogue("TEST");
 	}
 	return 0;
 
