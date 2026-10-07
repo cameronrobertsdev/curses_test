@@ -3,23 +3,13 @@
 #include <stdio.h>
 #include <curses.h>
 #include <locale.h>
+#include "objects.hpp"
 
 //Global Variables
 
 
 bool gameShouldClose = false;
 
-struct Vector2{
-	int x = 0;
-	int y = 0;
-	Vector2() : x{0}, y{0} {};
-	Vector2(int xVal, int yVal) : x{xVal}, y{yVal} {};
-};
-
-const Vector2 UP_DIR = Vector2(0,-1);
-const Vector2 DOWN_DIR = Vector2(0,1);
-const Vector2 LEFT_DIR = Vector2(-1,0);
-const Vector2 RIGHT_DIR = Vector2(1,0);
 
 struct Player{
 	Vector2 position;
@@ -31,24 +21,11 @@ struct Player{
 	void Move(Vector2 dir);
 };
 
-struct StaticObject{
-	Vector2 position;
-	int layerCount = 6;
-	const char* layers[6] = {"  (   )  ",
-													" (   . ) ",
-													"( .     )",
-													" (   . ) ",
-													"   \\║    ",
-													"    ║    "};
 
-	void Draw();
-};
+//struct ObjectList{
+	//Object[] objects;
+	
 
-void StaticObject::Draw(){
-	for(int i = 0; i < layerCount; i++){
-		mvprintw(position.y + i, position.x, layers[i]);
-	}
-}
 
 void Player::Move(Vector2 dir){
 	position.x += dir.x;
@@ -68,16 +45,12 @@ void DrawDialogue(const char* inputStr){
 	}
 }
 
-void DrawObjects(StaticObject objs[], int objectCount){
-	for(int i = 0; i < objectCount; i++){
-		objs[i].Draw();
-	}
-}
+
 
 
 int MainLoop(){
 	Player plyr;
-	StaticObject trees[2];
+	Object trees[2];
 	trees[0].position = Vector2(7, 8);
 	trees[1].position = Vector2(31, 19);
 
