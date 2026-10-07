@@ -15,11 +15,8 @@ void DrawObjects(Object objs[], int objectCount){
 	}
 }
 
-bool IsOverLapping(Object& objA, Object& objB){
-	if(objA.position == objB.position){
-		return true;
-	}
-	return false;
+bool IsOverLapping(Vector2& posA, Vector2& posB){
+	return posA == posB;
 }
 
 bool operator==(const Vector2& lhs, const Vector2& rhs){

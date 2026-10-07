@@ -9,6 +9,12 @@ struct Vector2{
 	Vector2(int xVal, int yVal) : x{xVal}, y{yVal} {};
 };
 
+struct Bounds{
+	Vector2 topLeft;
+	Vector2 bottomRight;
+	Bounds(Vector2 tL, Vector2 bR) : topLeft{tL}, bottomRight{bR} {};
+};
+
 const Vector2 UP_DIR = Vector2(0,-1);
 const Vector2 DOWN_DIR = Vector2(0,1);
 const Vector2 LEFT_DIR = Vector2(-1,0);
@@ -29,6 +35,10 @@ struct Object{
 
 void DrawObjects(Object objs[], int objectCount);
 
-bool IsOverLapping(Object& objA, Object& objB);
+bool IsOverLapping(Vector2& posA, Vector2& posB);
+
+// bool IsOverLapping(Vector2& pos, Bounds& bounds);
+
+// bool IsOverLapping(Bounds& boundsA, Bounds& boundsB);
 
 bool operator==(const Vector2& lhs, const Vector2& rhs);
