@@ -33,15 +33,15 @@ void Player::Move(Vector2 dir){
 }
 
 void DrawDialogue(const char* inputStr){
-	int screenWidth = 10;
-	int screenHeight = 3;
-	//getmaxyx(stdscr, screenHeight, screenWidth);
-	WINDOW* dialogueBox = newwin(3, screenWidth, 0, 0);
-	box(dialogueBox, 0, 0);
-	wrefresh(dialogueBox);
 	while(1){
+		int screenWidth = 10;
+		int screenHeight = 3;
+	//getmaxyx(stdscr, screenHeight, screenWidth);
+		WINDOW* dialogueBox = newwin(3, screenWidth, 0, 0);
+		box(dialogueBox, 0, 0);
+		wrefresh(dialogueBox);
 		int input = getch();
-		if(input == KEY_ENTER) break;
+		if(input == KEY_UP) break;
 	}
 }
 
@@ -121,8 +121,8 @@ void TestCollisions(){
 }
 
 int main(){
-	TestCollisions();
-//	InitCurses();
-//	MainLoop();
-//	endwin();
+	InitCurses();
+	DrawDialogue("TEST TEST TEST");
+	//MainLoop();
+	endwin();
 }
