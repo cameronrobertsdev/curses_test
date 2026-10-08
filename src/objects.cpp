@@ -15,6 +15,11 @@ void DrawObjects(Object objs[], int objectCount){
 	}
 }
 
+void Player::Move(Vector2 dir){
+	position.x += dir.x;
+	position.y += dir.y;
+}
+
 bool IsOverLapping(Vector2& posA, Vector2& posB){
 	return posA == posB;
 }

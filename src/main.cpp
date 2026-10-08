@@ -11,38 +11,28 @@
 bool gameShouldClose = false;
 
 
-struct Player{
-	Vector2 position;
-	const char* face = "(.3)";
-	const char* faceU = "(.^.)";
-	const char* faceD = "('v')";
-	const char* faceR = "(.3)";
-	const char* faceL = "(ε.)";
-	void Move(Vector2 dir);
-};
-
 
 //struct ObjectList{
 	//Object[] objects;
 	
 
 
-void Player::Move(Vector2 dir){
-	position.x += dir.x;
-	position.y += dir.y;
-}
 
-void DrawDialogue(const char* inputStr){
-	while(1){
+void DrawDialog(const char* inputStr){
+	bool playerStillReading = true;
+	while(playerStillReading){
 		int screenWidth = 10;
 		int screenHeight = 3;
 		getmaxyx(stdscr, screenHeight, screenWidth);
-		WINDOW* dialogueBox = newwin(3, screenWidth, 0, 0);
-		box(dialogueBox, 0, 0);
-		mvwprintw(dialogueBox, 1,1,inputStr);
-		wrefresh(dialogueBox);
+		WINDOW* dialogBox = newwin(3, screenWidth, 0, 0);
+		box(dialogBox, 0, 0);
+		mvwprintw(dialogBox, 1,1,inputStr);
+		wrefresh(dialogBox);
 		int input = getch();
-		if(input == KEY_UP) break;
+		if(input == KEY_UP){
+			wclear(dialogBox);
+			playerStillReading = false;
+		}
 	}
 }
 
@@ -79,7 +69,7 @@ int MainLoop(){
 		DrawObjects(trees,2);
 		mvprintw(plyr.position.y, plyr.position.x, plyr.face);
 		refresh();
-		//DrawDialogue("TEST");
+		//DrawDialog("TEST");
 	}
 	return 0;
 
@@ -123,7 +113,8 @@ void TestCollisions(){
 
 int main(){
 	InitCurses();
-	DrawDialogue("TEST TEST TEST");
-	//MainLoop();
+	DrawDialog("TEST TEST TEST");
+	printf("AAAA");
+	MainLoop();
 	endwin();
 }
