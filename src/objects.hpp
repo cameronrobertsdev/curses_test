@@ -37,8 +37,8 @@ void DrawObjects(Object objs[], int objectCount);
 
 bool IsOverLapping(Vector2& posA, Vector2& posB);
 
-// bool IsOverLapping(Vector2& pos, Bounds& bounds);
+bool IsOverLapping(Vector2& pos, Bounds& bounds);
 
-// bool IsOverLapping(Bounds& boundsA, Bounds& boundsB);
+bool IsOverLapping(Bounds& boundsA, Bounds& boundsB);
 
 bool operator==(const Vector2& lhs, const Vector2& rhs);

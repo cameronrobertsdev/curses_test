@@ -45,9 +45,6 @@ void DrawDialogue(const char* inputStr){
 	}
 }
 
-
-
-
 int MainLoop(){
 	Player plyr;
 	Object trees[2];
@@ -98,9 +95,34 @@ void InitCurses(){
 	curs_set(false);
 }
 
-int main(){
-	InitCurses();
-	MainLoop();
-	endwin();
+void TestCollisions(){
+	Vector2 posA = Vector2(5, 5);
+	Vector2 posB = Vector2(5,5);
+	Vector2 posC = Vector2(0,50);
+	Bounds boundsA = Bounds(Vector2(0,0),Vector2(30,30));
+	Bounds boundsB = Bounds(Vector2(9,9),Vector2(30,30));
+	Bounds boundsC = Bounds(Vector2(33,33),Vector2(40,40));
+
+	if(IsOverLapping(posA,posB)) printf("posA and posB are overlapping\n");
+	else printf("posA and posB are not overlapping\n");
+
+	if(IsOverLapping(posA, boundsA)) printf("posA is inside boundsA\n");
+	else printf("posA is not inside boundsA\n");
 	
+	if(IsOverLapping(posC, boundsA)) printf("posC is inside boundsA\n");
+	else printf("posC is not inside boundsA\n");
+
+	if(IsOverLapping(boundsB, boundsA)) printf("boundsB is overlapping boundsA\n");
+	else printf("boundsB is not overlapping boundsA\n");
+
+	if(IsOverLapping(boundsC, boundsA)) printf("boundsC is overlapping boundsA\n");
+	else printf("boundsC is not overlapping boundsA\n");
+
+}
+
+int main(){
+	TestCollisions();
+//	InitCurses();
+//	MainLoop();
+//	endwin();
 }

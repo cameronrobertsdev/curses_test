@@ -19,6 +19,21 @@ bool IsOverLapping(Vector2& posA, Vector2& posB){
 	return posA == posB;
 }
 
+
+bool IsOverLapping(Vector2& pos, Bounds& bounds){
+	if(pos.x >= bounds.topLeft.x && pos.x <= bounds.bottomRight.x){
+		if(pos.y >= bounds.topLeft.y && pos.y <= bounds.bottomRight.y){
+			return true;
+		}
+	}
+	return false;
+}
+
+bool IsOverLapping(Bounds& boundsA, Bounds& boundsB){
+	return IsOverLapping(boundsA.topLeft, boundsB) || 
+		IsOverLapping(boundsA.bottomRight, boundsB);
+}
+
 bool operator==(const Vector2& lhs, const Vector2& rhs){
 	return(lhs.x == rhs.x && lhs.y == rhs.y);
 }
