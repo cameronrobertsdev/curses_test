@@ -22,6 +22,7 @@ const Vector2 RIGHT_DIR = Vector2(1,0);
 
 struct Object{
 	Vector2 position;
+	Bounds collisionBounds;
 	int layerCount = 6;
 	const char* layers[6] = {"  (   )  ",
 													" (   . ) ",
