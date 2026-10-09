@@ -16,5 +16,15 @@ the curses library and I think this will be a fun project to help improve my C++
 I'm using a program called vit, which is a terminal-based program that allows a user to 
 interact with the taskwarrior task management system using a vim-like interface.
 
-I'm currently using NeoVim as my editor. I haven't setup many custom features yet but it
-is working well for me so far.
+I'm currently using NeoVim as my editor. I haven't setup many custom features yet but 
+it is working well for me so far.
+
+### NCurses Notes
+
+"curscr" is the screen image of what the terminal currently looks like.
+
+"stdscr" is the default on which to make changes.
+
+refresh() is called to refresh the stdscr. wrefresh() is called for other windows.
+
+"w" prefixed functions are called on specific windows. 
