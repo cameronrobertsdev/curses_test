@@ -39,6 +39,7 @@ void DrawDialogue(const char* inputStr){
 	//getmaxyx(stdscr, screenHeight, screenWidth);
 		WINDOW* dialogueBox = newwin(3, screenWidth, 0, 0);
 		box(dialogueBox, 0, 0);
+		mvwprintw(dialogueBox, 1,1,inputStr);
 		wrefresh(dialogueBox);
 		int input = getch();
 		if(input == KEY_UP) break;
