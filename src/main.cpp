@@ -36,7 +36,7 @@ void DrawDialogue(const char* inputStr){
 	while(1){
 		int screenWidth = 10;
 		int screenHeight = 3;
-	//getmaxyx(stdscr, screenHeight, screenWidth);
+		getmaxyx(stdscr, screenHeight, screenWidth);
 		WINDOW* dialogueBox = newwin(3, screenWidth, 0, 0);
 		box(dialogueBox, 0, 0);
 		mvwprintw(dialogueBox, 1,1,inputStr);
