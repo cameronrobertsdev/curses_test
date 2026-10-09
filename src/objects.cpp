@@ -20,6 +20,7 @@ void Player::Move(Vector2 dir){
 	position.y += dir.y;
 }
 
+
 bool IsOverLapping(Vector2& posA, Vector2& posB){
 	return posA == posB;
 }
@@ -41,4 +42,18 @@ bool IsOverLapping(Bounds& boundsA, Bounds& boundsB){
 
 bool operator==(const Vector2& lhs, const Vector2& rhs){
 	return(lhs.x == rhs.x && lhs.y == rhs.y);
+}
+
+void Player::TriggerVolumeCheck(CollisionVolume triggerVolumes[], int volumeCount){
+	for(int i = 0; i < volumeCount; i++){
+		if(IsOverLapping(position, triggerVolumes[i].bounds)){
+			if(triggerVolumes[i].triggerAuto && !triggerVolumes[i].hasBeenTriggered){
+					triggerVolumes[i].OnVolumeEntered();
+			}
+		}
+	}
+}
+
+void CollisionVolume::OnVolumeEntered(){
+	//Show message etc.
 }

@@ -28,3 +28,19 @@ it is working well for me so far.
 refresh() is called to refresh the stdscr. wrefresh() is called for other windows.
 
 "w" prefixed functions are called on specific windows. 
+
+## October 8, 2026
+
+I'm working on adding collision detection for when the player walks into a collision 
+volume.
+
+Steps:
+
+Create a volume struct. This can be easily combined with a more general class later if
+appropriate.
+
+Create an array for all the scenes collision bounds volumes.
+
+When the player moves, check the player's position against all the collision bounds.
+
+If the player is overlapping a bounds, run the bounds dialog.

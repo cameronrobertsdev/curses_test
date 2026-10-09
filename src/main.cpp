@@ -11,13 +11,6 @@
 bool gameShouldClose = false;
 
 
-
-//struct ObjectList{
-	//Object[] objects;
-	
-
-
-
 void DrawDialog(const char* inputStr){
 	bool playerStillReading = true;
 	while(playerStillReading){

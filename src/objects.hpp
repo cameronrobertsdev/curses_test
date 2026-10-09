@@ -20,6 +20,17 @@ const Vector2 DOWN_DIR = Vector2(0,1);
 const Vector2 LEFT_DIR = Vector2(-1,0);
 const Vector2 RIGHT_DIR = Vector2(1,0);
 
+struct CollisionVolume{
+	Bounds bounds;
+	const char* message = "Howdy Traveller!";
+	bool triggerOnceOnly = true;
+	bool hasBeenTriggered = false;
+	bool triggerAuto = true;
+	void OnVolumeEntered();
+	CollisionVolume(const char* msg, Bounds bnds) : message{msg}, bounds{bnds} {};
+};
+	
+
 struct Object{
 	Vector2 position;
 	int layerCount = 6;
@@ -41,6 +52,7 @@ struct Player{
 	const char* faceR = "(.3)";
 	const char* faceL = "(ε.)";
 	void Move(Vector2 dir);
+	void TriggerVolumeCheck(CollisionVolume triggerVolumes[], int volumeCount);
 };
 
 
@@ -53,3 +65,4 @@ bool IsOverLapping(Vector2& pos, Bounds& bounds);
 bool IsOverLapping(Bounds& boundsA, Bounds& boundsB);
 
 bool operator==(const Vector2& lhs, const Vector2& rhs);
+
