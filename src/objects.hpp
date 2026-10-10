@@ -66,3 +66,7 @@ bool IsOverLapping(Bounds& boundsA, Bounds& boundsB);
 
 bool operator==(const Vector2& lhs, const Vector2& rhs);
 
+void TestCollisions();
+
+void DrawDialog(const char* inputStr);
+

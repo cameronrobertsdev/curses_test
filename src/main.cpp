@@ -10,25 +10,6 @@
 
 bool gameShouldClose = false;
 
-
-void DrawDialog(const char* inputStr){
-	bool playerStillReading = true;
-	while(playerStillReading){
-		int screenWidth = 10;
-		int screenHeight = 3;
-		getmaxyx(stdscr, screenHeight, screenWidth);
-		WINDOW* dialogBox = newwin(3, screenWidth, 0, 0);
-		box(dialogBox, 0, 0);
-		mvwprintw(dialogBox, 1,1,inputStr);
-		wrefresh(dialogBox);
-		int input = getch();
-		if(input == KEY_UP){
-			wclear(dialogBox);
-			playerStillReading = false;
-		}
-	}
-}
-
 int MainLoop(){
 	Player plyr;
 	Object trees[2];
@@ -79,35 +60,10 @@ void InitCurses(){
 	curs_set(false);
 }
 
-void TestCollisions(){
-	Vector2 posA = Vector2(5, 5);
-	Vector2 posB = Vector2(5,5);
-	Vector2 posC = Vector2(0,50);
-	Bounds boundsA = Bounds(Vector2(0,0),Vector2(30,30));
-	Bounds boundsB = Bounds(Vector2(9,9),Vector2(30,30));
-	Bounds boundsC = Bounds(Vector2(33,33),Vector2(40,40));
-
-	if(IsOverLapping(posA,posB)) printf("posA and posB are overlapping\n");
-	else printf("posA and posB are not overlapping\n");
-
-	if(IsOverLapping(posA, boundsA)) printf("posA is inside boundsA\n");
-	else printf("posA is not inside boundsA\n");
-	
-	if(IsOverLapping(posC, boundsA)) printf("posC is inside boundsA\n");
-	else printf("posC is not inside boundsA\n");
-
-	if(IsOverLapping(boundsB, boundsA)) printf("boundsB is overlapping boundsA\n");
-	else printf("boundsB is not overlapping boundsA\n");
-
-	if(IsOverLapping(boundsC, boundsA)) printf("boundsC is overlapping boundsA\n");
-	else printf("boundsC is not overlapping boundsA\n");
-
-}
 
 int main(){
 	InitCurses();
 	DrawDialog("TEST TEST TEST");
-	printf("AAAA");
 	MainLoop();
 	endwin();
 }
