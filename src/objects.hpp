@@ -13,6 +13,7 @@ struct Bounds{
 	Vector2 topLeft;
 	Vector2 bottomRight;
 	Bounds(Vector2 tL, Vector2 bR) : topLeft{tL}, bottomRight{bR} {};
+	Bounds() : topLeft{Vector2()}, bottomRight{Vector2(5,5)} {};
 };
 
 const Vector2 UP_DIR = Vector2(0,-1);
@@ -28,6 +29,7 @@ struct CollisionVolume{
 	bool triggerAuto = true;
 	void OnVolumeEntered();
 	CollisionVolume(const char* msg, Bounds bnds) : message{msg}, bounds{bnds} {};
+	CollisionVolume() : bounds{Bounds(Vector2(10,10), Vector2(15,15))} {};
 };
 	
 
@@ -46,13 +48,15 @@ struct Object{
 
 struct Player{
 	Vector2 position;
+	CollisionVolume triggerVolumes[1];
+	int volumeCount = 1; 
 	const char* face = "(.3)";
 	const char* faceU = "(.^.)";
 	const char* faceD = "('v')";
 	const char* faceR = "(.3)";
 	const char* faceL = "(ε.)";
 	void Move(Vector2 dir);
-	void TriggerVolumeCheck(CollisionVolume triggerVolumes[], int volumeCount);
+	void TriggerVolumeCheck();
 };
 
 
@@ -70,3 +74,4 @@ void TestCollisions();
 
 void DrawDialog(const char* inputStr);
 
+void DebugDrawCollisionVolumes(CollisionVolume vol);

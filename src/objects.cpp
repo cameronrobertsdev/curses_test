@@ -18,6 +18,7 @@ void DrawObjects(Object objs[], int objectCount){
 void Player::Move(Vector2 dir){
 	position.x += dir.x;
 	position.y += dir.y;
+
 }
 
 bool IsOverLapping(Vector2& posA, Vector2& posB){
@@ -43,7 +44,7 @@ bool operator==(const Vector2& lhs, const Vector2& rhs){
 	return(lhs.x == rhs.x && lhs.y == rhs.y);
 }
 
-void Player::TriggerVolumeCheck(CollisionVolume triggerVolumes[], int volumeCount){
+void Player::TriggerVolumeCheck(){
 	for(int i = 0; i < volumeCount; i++){
 		if(IsOverLapping(position, triggerVolumes[i].bounds)){
 			if(triggerVolumes[i].triggerAuto && !triggerVolumes[i].hasBeenTriggered){
@@ -55,6 +56,7 @@ void Player::TriggerVolumeCheck(CollisionVolume triggerVolumes[], int volumeCoun
 
 void CollisionVolume::OnVolumeEntered(){
 	//Show message etc.
+	DrawDialog(message);	
 }
 
 void TestCollisions(){
@@ -98,3 +100,11 @@ void DrawDialog(const char* inputStr){
 		}
 	}
 }
+
+void DebugDrawCollisionVolumes(CollisionVolume vol){
+	int lines = vol.bounds.bottomRight.y - vol.bounds.topLeft.y;
+	int columns = vol.bounds.bottomRight.x - vol.bounds.topLeft.x;
+	WINDOW* debugBox = newwin(lines, columns, vol.bounds.topLeft.y, vol.bounds.topLeft.x);
+	box(debugBox, 0, 0);
+	wrefresh(debugBox);
+}	

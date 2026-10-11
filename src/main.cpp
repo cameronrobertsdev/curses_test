@@ -6,14 +6,15 @@
 #include "objects.hpp"
 
 //Global Variables
+CollisionVolume volumeForTest[1];
 
+Player plyr;
 
 bool gameShouldClose = false;
 
 int MainLoop(){
-	Player plyr;
 	Object trees[2];
-	trees[0].position = Vector2(7, 8);
+	trees[0].position = Vector2(50, 8);
 	trees[1].position = Vector2(31, 19);
 
 	int input;
@@ -41,6 +42,7 @@ int MainLoop(){
 			plyr.Move(LEFT_DIR);
 		}
 		DrawObjects(trees,2);
+		DebugDrawCollisionVolumes(plyr.triggerVolumes[0]);
 		mvprintw(plyr.position.y, plyr.position.x, plyr.face);
 		refresh();
 		//DrawDialog("TEST");
@@ -63,7 +65,7 @@ void InitCurses(){
 
 int main(){
 	InitCurses();
-	DrawDialog("TEST TEST TEST");
+	//DrawDialog("TEST TEST TEST");
 	MainLoop();
 	endwin();
 }
